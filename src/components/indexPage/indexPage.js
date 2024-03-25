@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { PokemonCard } from './PokemonCard'
+import { PokemonCard } from '../PokemonCard/PokemonCard'
 import axios from 'axios'
-import './style.css'
 
 const IndexPage = () => {
   const [pokemonList, setPokemonList] = useState([])

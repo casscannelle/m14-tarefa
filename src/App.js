@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+
 import './App.css';
-import IndexPage from './indexPage';
+import IndexPage from './components/indexPage/indexPage'
 
 function App() {
   return (
