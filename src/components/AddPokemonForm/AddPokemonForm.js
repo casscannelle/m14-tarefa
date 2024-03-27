@@ -14,12 +14,12 @@ const AddPokemonForm = ({ updateList, setCreatePokemon, setEditPokemon }) => {
         evolution: Number(evolutionInput)
       });
       updateList();
-      setCreatePokemon(false);
-      setEditPokemon(false);
 
     } catch (error) {
       console.error('Erro ao adicionar:', error);
     }
+    setCreatePokemon(false); 
+    setEditPokemon(false); 
   };
 
   const handleCancel = () => {
