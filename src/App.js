@@ -1,6 +1,6 @@
 
 import './App.css';
-import IndexPage from './components/indexPage/indexPage'
+import IndexPage from './components/IndexPage/IndexPage'
 
 function App() {
   return (
