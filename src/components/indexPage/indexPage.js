@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { AddPokemon } from '../AddPokemon/AddPokemon'
+import AddPokemon from '../AddPokemon/AddPokemon'
 import axios from 'axios'
 import PokemonCard from '../PokemonCard/PokemonCard'
 

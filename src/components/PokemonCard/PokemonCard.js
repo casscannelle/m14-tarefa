@@ -15,8 +15,8 @@ const PokemonCard = ({ id, name, image, evolution, updateList }) => {
     <div className="pokemon-card">
       <h2>{name}</h2>
       <img src={image} alt={name} />
-      <h3>Evolution Stage: {evolution}</h3>
-      <button onClick={handleDeletePokemon}>Delete</button>
+      <h3>Estágio de evolução: {evolution}</h3>
+      <button onClick={handleDeletePokemon}>Excluir Pokémon</button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddPokemonForm = ({ updateList }) => {
+const AddPokemon = ({ updateList, setCreatePokemon, setEditPokemon }) => {
   const [nameInput, setNameInput] = useState('');
   const [imageUrlInput, setImageUrlInput] = useState('');
   const [evolutionInput, setEvolutionInput] = useState('');
@@ -19,36 +19,50 @@ const AddPokemonForm = ({ updateList }) => {
     }
   };
 
+  const handleCancel = () => {
+    setCreatePokemon(false); 
+    setEditPokemon(false); 
+  };
+
   return (
     <div>
-      <h2>Add New Pokemon</h2>
+      <div className="pokemon-card">
+      <h2>Adicionar Pokémon</h2>
+        <div>
+          <label>
+            Nome:
+          <input
+              type="text"
+              onChange={(e) => setNameInput(e.target.value)}
+              value={nameInput}
+            />
+          </label>
+        </div>
+      <div>
       <label>
-        Name:
-        <input
-          type="text"
-          onChange={(e) => setNameInput(e.target.value)}
-          value={nameInput}
-        />
-      </label>
-      <label>
-        Image URL:
+        URL da imagem:
         <input
           type="text"
           onChange={(e) => setImageUrlInput(e.target.value)}
           value={imageUrlInput}
         />
       </label>
+      </div>
+      <div>
       <label>
-        Evolution Stage:
+        Estágio de evolução:
         <input
           type="number"
           onChange={(e) => setEvolutionInput(e.target.value)}
           value={evolutionInput}
         />
       </label>
-      <button onClick={handleChangePokemon}>Add Pokemon</button>
+      </div>
+      <button onClick={handleChangePokemon}>Adicionar Pokémon</button>
+      <button onClick={handleCancel}>Cancelar</button>
+    </div>
     </div>
   );
 };
 
-export default AddPokemonForm;
+export default AddPokemon;
