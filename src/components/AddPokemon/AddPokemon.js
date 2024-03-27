@@ -1,93 +1,54 @@
-import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
-export const AddPokemon = ({
-  id,
-  name,
-  image,
-  evolution,
-  createPokemon,
-  setCreatePokemon,
-  updateList,
-  setUpdateList
-}) => {
-  const [editPokemon, setEditPokemon] = useState(createPokemon ?? false)
-  const [nameInput, setNameInput] = useState(name ?? '')
-  const [imageUrlInput, setImageUrlInput] = useState(image ?? '')
-  const [evolutionInput, setEvolutionInput] = useState(
-    evolution?.toString() ?? ''
-  )
+const AddPokemonForm = ({ updateList }) => {
+  const [nameInput, setNameInput] = useState('');
+  const [imageUrlInput, setImageUrlInput] = useState('');
+  const [evolutionInput, setEvolutionInput] = useState('');
 
-  const handleChangePokemon = () => {
-    if (createPokemon) {
-      axios.post('http://localhost:4000/new-pokemon', {
+  const handleChangePokemon = async () => {
+    try {
+      await axios.post('http://localhost:4000/new-pokemon', {
         name: nameInput,
         imageUrl: imageUrlInput,
         evolution: Number(evolutionInput)
-      })
-      setCreatePokemon(false)
-    } else {
-      axios.put(`http://localhost:4000/update-pokemon/${id}`, {
-        name: nameInput,
-        imageUrl: imageUrlInput,
-        evolution: Number(evolutionInput)
-      })
-      setEditPokemon(false)
+      });
+      updateList();
+    } catch (error) {
+      console.error('Error adding new Pokemon:', error);
     }
-    setUpdateList(updateList + 1)
-  }
-
-  const handleDeletePokemon = () => {
-    axios.delete(`http://localhost:4000/delete-pokemon/${id}`)
-    setUpdateList(updateList + 1)
-  }
+  };
 
   return (
-    <div className="pokemon-card">
-      {editPokemon ? (
-        <div>
-          <label>
-            Nome:
-            <input
-              type="text"
-              onChange={e => setNameInput(e.target.value)}
-              value={nameInput}
-            />
-          </label>
-          <label>
-            Url da imagem:
-            <input
-              type="text"
-              onChange={e => setImageUrlInput(e.target.value)}
-              value={imageUrlInput}
-            />
-          </label>
-          <label>
-            Estágio de evolução:
-            <input
-              type="number"
-              onChange={e => setEvolutionInput(e.target.value)}
-              value={evolutionInput}
-            />
-          </label>
-          <button
-            onClick={() =>
-              createPokemon ? setCreatePokemon(false) : setEditPokemon(false)
-            }
-          >
-            Cancela
-          </button>
-          <button onClick={handleChangePokemon}>Confirma</button>
-        </div>
-      ) : (
-        <>
-          <h2>{name}</h2>
-          <img src={image} alt={name} />
-          <h3>Estágio de evolução: {evolution}</h3>
-          <button onClick={() => setEditPokemon(true)}>Alterar</button>
-          <button onClick={handleDeletePokemon}>Remover</button>
-        </>
-      )}
+    <div>
+      <h2>Add New Pokemon</h2>
+      <label>
+        Name:
+        <input
+          type="text"
+          onChange={(e) => setNameInput(e.target.value)}
+          value={nameInput}
+        />
+      </label>
+      <label>
+        Image URL:
+        <input
+          type="text"
+          onChange={(e) => setImageUrlInput(e.target.value)}
+          value={imageUrlInput}
+        />
+      </label>
+      <label>
+        Evolution Stage:
+        <input
+          type="number"
+          onChange={(e) => setEvolutionInput(e.target.value)}
+          value={evolutionInput}
+        />
+      </label>
+      <button onClick={handleChangePokemon}>Add Pokemon</button>
     </div>
-  )
-}
+  );
+};
+
+export default AddPokemonForm;

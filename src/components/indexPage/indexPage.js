@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AddPokemon } from '../AddPokemon/AddPokemon'
 import axios from 'axios'
+import PokemonCard from '../PokemonCard/PokemonCard'
 
 const IndexPage = () => {
   const [pokemonList, setPokemonList] = useState([])
@@ -33,7 +34,7 @@ const IndexPage = () => {
       )}
       <div className="pokemon-container">
         {pokemonList.map(({ _id, name, imageUrl, evolution }) => (
-          <AddPokemon
+          <PokemonCard
             key={_id}
             id={_id}
             name={name}
