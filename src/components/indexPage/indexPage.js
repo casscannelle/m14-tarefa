@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import AddPokemon from '../AddPokemon/AddPokemon'
 import axios from 'axios'
 import PokemonCard from '../PokemonCard/PokemonCard'
+import AddPokemonForm from '../AddPokemonForm/AddPokemonForm'
 
 const IndexPage = () => {
   const [pokemonList, setPokemonList] = useState([])
@@ -24,7 +24,7 @@ const IndexPage = () => {
       </button>
       {createPokemon && (
         <div className="create-card">
-          <AddPokemon
+          <AddPokemonForm
             createPokemon={createPokemon}
             setCreatePokemon={setCreatePokemon}
             updateList={updateList}
@@ -49,4 +49,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default IndexPage;

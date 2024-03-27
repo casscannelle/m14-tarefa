@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddPokemon = ({ updateList, setCreatePokemon, setEditPokemon }) => {
+const AddPokemonForm = ({ updateList, setCreatePokemon, setEditPokemon }) => {
   const [nameInput, setNameInput] = useState('');
   const [imageUrlInput, setImageUrlInput] = useState('');
   const [evolutionInput, setEvolutionInput] = useState('');
@@ -14,8 +14,11 @@ const AddPokemon = ({ updateList, setCreatePokemon, setEditPokemon }) => {
         evolution: Number(evolutionInput)
       });
       updateList();
+      setCreatePokemon(false);
+      setEditPokemon(false);
+
     } catch (error) {
-      console.error('Error adding new Pokemon:', error);
+      console.error('Erro ao adicionar:', error);
     }
   };
 
@@ -65,4 +68,4 @@ const AddPokemon = ({ updateList, setCreatePokemon, setEditPokemon }) => {
   );
 };
 
-export default AddPokemon;
+export default AddPokemonForm;
