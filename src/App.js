@@ -1,9 +1,9 @@
 import './App.css';
-import IndexPage from './components/IndexPage/IndexPage'
+import MainPage from './components/MainPage/MainPage'
 
 function App() {
   return (
-    <IndexPage />
+    <MainPage />
   );
 }
 

@@ -3,7 +3,7 @@ import axios from 'axios'
 import PokemonCard from '../PokemonCard/PokemonCard'
 import AddPokemonForm from '../AddPokemonForm/AddPokemonForm'
 
-const IndexPage = () => {
+const MainPage = () => {
   const [pokemonList, setPokemonList] = useState([])
   const [createPokemon, setCreatePokemon] = useState(false)
   const [updateList, setUpdateList] = useState(0)
@@ -49,4 +49,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage;
+export default MainPage;
